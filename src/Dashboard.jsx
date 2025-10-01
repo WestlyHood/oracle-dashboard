@@ -32,7 +32,7 @@ export default function Dashboard() {
     <div className="min-h-screen bg-gradient-to-br from-gray-900 via-black to-gray-800 flex items-center justify-center p-8">
       <div className="max-w-6xl w-full">
         <h1 className="text-4xl font-extrabold text-center mb-2 bg-gradient-to-r from-purple-400 to-pink-500 bg-clip-text text-transparent drop-shadow-lg">
-            Ritual Price Oracle 
+          Ritual Price Oracle
         </h1>
 
         {lastUpdated && (
@@ -62,10 +62,17 @@ export default function Dashboard() {
                   predictionLabel = (
                     <span
                       className={`inline-block mt-3 px-3 py-1 rounded-full text-sm font-medium ${
-                        isUp ? "bg-green-500/20 text-green-400" : "bg-red-500/20 text-red-400"
+                        isUp
+                          ? "bg-green-500/20 text-green-400"
+                          : "bg-red-500/20 text-red-400"
                       }`}
                     >
-                      ⏳ 5m Prediction: {predicted.toFixed(2)} {isUp ? "↑" : "↓"}
+                      ⏳ 5m Prediction:{" "}
+                      {predicted.toLocaleString(undefined, {
+                        minimumFractionDigits: 2,
+                        maximumFractionDigits: 2,
+                      })}{" "}
+                      {isUp ? "↑" : "↓"}
                     </span>
                   );
                 } else {
@@ -85,16 +92,25 @@ export default function Dashboard() {
                       {p.base}/{p.quote}
                     </h2>
                     <p className="text-3xl font-extrabold text-purple-300 drop-shadow-sm mb-2">
-                      {currentPrice.toFixed(2)}
+                      {currentPrice.toLocaleString(undefined, {
+                        minimumFractionDigits: 2,
+                        maximumFractionDigits: 2,
+                      })}
                     </p>
                     <p className="text-gray-400">
                       Confidence:{" "}
                       <span
                         className={`font-semibold ${
-                          p.confidenceBP > 9500 ? "text-green-400" : "text-yellow-400"
+                          p.confidenceBP > 9500
+                            ? "text-green-400"
+                            : "text-yellow-400"
                         }`}
                       >
-                        {(p.confidenceBP / 100).toFixed(2)}%
+                        {(p.confidenceBP / 100).toLocaleString(undefined, {
+                          minimumFractionDigits: 2,
+                          maximumFractionDigits: 2,
+                        })}
+                        %
                       </span>
                       <br />
                       Time:{" "}
@@ -111,7 +127,8 @@ export default function Dashboard() {
                         rel="noopener noreferrer"
                         className="block mt-5 text-sm text-blue-400 hover:underline truncate"
                       >
-                        🔗 View Tx: {p.txHash.slice(0, 8)}...{p.txHash.slice(-6)}
+                        🔗 View Tx: {p.txHash.slice(0, 8)}...
+                        {p.txHash.slice(-6)}
                       </a>
                     )}
                   </div>

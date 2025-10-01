@@ -32,7 +32,7 @@ export default function Dashboard() {
     <div className="min-h-screen bg-gradient-to-br from-gray-900 via-black to-gray-800 flex items-center justify-center p-8">
       <div className="max-w-6xl w-full">
         <h1 className="text-4xl font-extrabold text-center mb-2 bg-gradient-to-r from-purple-400 to-pink-500 bg-clip-text text-transparent drop-shadow-lg">
-          ⚡Infernet AI Oracle Dashboard
+          ⚡Ritual Price Oracle Dashboard
         </h1>
 
         {lastUpdated && (
